@@ -22,8 +22,8 @@ include_once '../Controller/c_user.php';
 
         body {
             font-family: "Segoe UI", Arial, sans-serif;
-            background: #f5f7fb;
-            color: #1e293b;
+            background: #f4f6f9;
+            color: #000000;
         }
 
         /* SIDEBAR */
@@ -60,14 +60,14 @@ include_once '../Controller/c_user.php';
         }
 
         .brand {
-            color: #14213d;
+            color: #000000;
             font-size: 18px;
             font-weight: 700;
         }
 
         .menu-title {
             padding: 28px 22px 10px;
-            color: #8d9db2;
+            color: #000000;
             font-size: 11px;
             font-weight: 700;
         }
@@ -83,7 +83,7 @@ include_once '../Controller/c_user.php';
             gap: 14px;
             padding: 0 12px;
             margin-bottom: 5px;
-            color: #536783;
+            color: #000000;
             text-decoration: none;
             border-radius: 10px;
             font-size: 14px;
@@ -129,8 +129,9 @@ include_once '../Controller/c_user.php';
             display: flex;
             align-items: center;
             padding: 0 32px;
-            background: #286bea;
-            color: white;
+            background: #ffffff;
+            color: #000000;
+            border-bottom: 1px solid #e2e8f0;
             z-index: 90;
             box-shadow: 0 1px 5px rgba(0,0,0,.08);
         }
@@ -138,6 +139,7 @@ include_once '../Controller/c_user.php';
         .topbar-title {
             font-size: 16px;
             font-weight: 700;
+            color: #000000;
         }
 
         /* MAIN */
@@ -148,30 +150,31 @@ include_once '../Controller/c_user.php';
         }
 
         .content {
-            padding: 32px;
+            padding: 30px;
         }
 
         .page-title {
-            margin-bottom: 24px;
+            margin-bottom: 22px;
         }
 
         .page-title h1 {
-            font-size: 24px;
-            margin-bottom: 4px;
+            font-size: 25px;
+            margin-bottom: 6px;
+            color: #000000;
         }
 
         .page-title p {
             font-size: 13px;
-            color: #718096;
+            color: #000000;
         }
 
         /* CARD */
         .card {
             background: white;
-            border-radius: 14px;
+            border-radius: 12px;
             overflow: hidden;
             border: 1px solid #e5eaf0;
-            box-shadow: 0 2px 8px rgba(30,41,59,.06);
+            box-shadow: 0 4px 14px rgba(15,23,42,.06);
         }
 
         .card-header {
@@ -179,7 +182,7 @@ include_once '../Controller/c_user.php';
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px 24px;
+            padding: 16px 22px;
             border-bottom: 1px solid #e7edf3;
         }
 
@@ -237,20 +240,20 @@ include_once '../Controller/c_user.php';
         }
 
         thead {
-            background: #203246;
+            background: #f1f5f9;
         }
 
         thead th {
             height: 41px;
             padding: 0 24px;
-            color: white;
+            color: #000000;
             font-size: 12px;
             text-align: left;
             white-space: nowrap;
         }
 
         tbody tr {
-            height: 62px;
+            height: 60px;
         }
 
         tbody tr:hover {
@@ -261,11 +264,12 @@ include_once '../Controller/c_user.php';
             padding: 10px 24px;
             border-bottom: 1px solid #dfe6ee;
             font-size: 13px;
+            color: #000000;
             white-space: nowrap;
         }
 
         .number {
-            color: #64748b;
+            color: #000000;
             font-weight: 600;
         }
 
@@ -292,7 +296,7 @@ include_once '../Controller/c_user.php';
         }
 
         .user-username {
-            color: #8a97a8;
+            color: #000000;
             font-size: 11px;
         }
 
@@ -363,7 +367,7 @@ include_once '../Controller/c_user.php';
         .empty {
             height: 130px;
             text-align: center;
-            color: #94a3b8;
+            color: #000000;
         }
 
         /* RESPONSIVE */
@@ -433,6 +437,77 @@ include_once '../Controller/c_user.php';
                 gap: 10px;
             }
         }
+
+        /* PENYESUAIAN TEKS DAN TATA LETAK */
+        body, .page-title h1, .page-title p, .card-title,
+        tbody td, .user-name, .user-username, .number,
+        .menu a, .brand, .topbar-title {
+            color: #000000;
+        }
+
+        .sidebar {
+            box-shadow: 2px 0 10px rgba(15, 23, 42, 0.03);
+        }
+
+        .menu a {
+            margin-bottom: 7px;
+            font-weight: 500;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            background: #edf2f7;
+            color: #000000;
+        }
+
+        .topbar {
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+        }
+
+        .card-header {
+            background: #ffffff;
+        }
+
+        thead th {
+            border-bottom: 1px solid #dbe2ea;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .btn-back {
+            color: #000000;
+            transition: .2s ease;
+        }
+
+        .btn-back:hover {
+            background: #f1f5f9;
+        }
+
+        .btn-update,
+        .btn-delete {
+            transition: .2s ease;
+        }
+
+        .btn-update:hover {
+            background: #fff1cc;
+        }
+
+        .btn-delete:hover {
+            background: #ffe4e4;
+        }
+
+        @media (max-width: 650px) {
+            .topbar-title {
+                font-size: 14px;
+            }
+
+            .page-title h1 {
+                font-size: 21px;
+            }
+        }
+
     </style>
 </head>
 
