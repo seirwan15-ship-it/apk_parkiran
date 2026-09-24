@@ -108,7 +108,7 @@ body {
 }
 
 .brand-name {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 800;
     color: var(--text);
 }
@@ -786,18 +786,21 @@ tbody td.num {
             <svg viewBox="0 0 24 24"
                  fill="none"
                  stroke="currentColor"
-                 stroke-width="2.5"
+                 stroke-width="2"
                  stroke-linecap="round"
                  stroke-linejoin="round">
 
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <path d="M5 17H3v-5l2-5h14l2 5v5h-2"/>
+                <circle cx="7.5" cy="17.5" r="2.5"/>
+                <circle cx="16.5" cy="17.5" r="2.5"/>
+                <path d="M5 12h14"/>
 
             </svg>
 
         </div>
 
         <div class="brand-name">
-            Parking Admin
+            My Menu
         </div>
 
     </div>
@@ -813,7 +816,7 @@ tbody td.num {
 
             <!-- Dashboard -->
             <li>
-                <a href="v_homeadmin.php">
+                <a href="v_homeadmin.php" class="active">
 
                     <svg viewBox="0 0 24 24"
                          fill="none"
@@ -846,10 +849,10 @@ tbody td.num {
                          stroke-linecap="round"
                          stroke-linejoin="round">
 
-                        <circle cx="9" cy="7" r="4"/>
-                        <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                        <path d="M21 21v-2a4 4 0 0 0-3-3.85"/>
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="8.5" cy="7" r="4"/>
+                        <line x1="20" y1="8" x2="20" y2="14"/>
+                        <line x1="23" y1="11" x2="17" y2="11"/>
 
                     </svg>
 
@@ -885,7 +888,7 @@ tbody td.num {
 
             <!-- Tarif -->
             <li>
-                <a href="v_tampil_data_tarif.php" class="active">
+                <a href="v_tampil_data_tarif.php">
 
                     <svg viewBox="0 0 24 24"
                          fill="none"
@@ -894,9 +897,8 @@ tbody td.num {
                          stroke-linecap="round"
                          stroke-linejoin="round">
 
-                        <circle cx="12" cy="12" r="9"/>
-                        <path d="M14.5 9a2.5 2.5 0 0 0-5 0v6a2.5 2.5 0 0 0 5 0"/>
-                        <line x1="9.5" y1="12" x2="14.5" y2="12"/>
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
 
                     </svg>
 
@@ -1320,4 +1322,3 @@ tbody td.num {
 
 </body>
 </html>
- 
