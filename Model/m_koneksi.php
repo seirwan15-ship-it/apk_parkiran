@@ -3,7 +3,7 @@ class koneksi {
     private $host = "localhost";
     private $username = "root";
     private $pass = "";
-    private $db = "parkir";
+    private $db = "parkir_digital";
 
     public $koneksi;
 

@@ -1,35 +1,89 @@
-<?php include_once '../Controller/c_tarif.php'; ?>
+<?php
+session_start();
+if (!isset($_SESSION['data']) || $_SESSION['data']['role'] != 'admin') {
+    header("Location: ../index.php");
+    exit;
+}
+$active_menu = 'tarif';
+include_once '_sidebar_admin.php';
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<title>Tambah Tarif</title>
-    <link rel="stylesheet" href="../assets/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Tarif - Sistem Parkir</title>
+    <style>
+        .sb-content { animation: fadeUp .3s ease; }
+        @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+        .page-header { margin-bottom: 22px; }
+        .page-header h1 { font-size: 22px; font-weight: 800; color: #1e293b; margin-bottom: 4px; }
+        .page-header p  { font-size: 13px; color: #64748b; }
+        .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(15,23,42,.06); max-width: 500px; }
+        .card-header { display: flex; align-items: center; gap: 10px; padding: 16px 22px; border-bottom: 1px solid #e2e8f0; min-height: 60px; }
+        .card-hicon { width: 34px; height: 34px; border-radius: 9px; background: #eff6ff; color: #2563eb; display: flex; align-items: center; justify-content: center; }
+        .card-hicon svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .card-header h2 { font-size: 14px; font-weight: 700; color: #1e293b; }
+        .card-body { padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+        .form-field { display: flex; flex-direction: column; gap: 6px; }
+        .form-field label { font-size: 12.5px; font-weight: 600; color: #334155; }
+        .form-field label span { color: #ef4444; }
+        .form-field input, .form-field select { height: 42px; border: 1px solid #e2e8f0; border-radius: 8px; padding: 0 12px; background: #fff; color: #1e293b; font-family: inherit; font-size: 13.5px; outline: none; transition: .18s; }
+        .form-field input:focus, .form-field select:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
+        .form-field input::placeholder { color: #b0b7c3; }
+        .card-footer { display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding: 16px 22px; border-top: 1px solid #e2e8f0; background: #f8fafc; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0 18px; min-height: 38px; border-radius: 9px; font-family: inherit; font-size: 13px; font-weight: 600; text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: .18s; }
+        .btn-cancel { background: #fff; color: #475569; border-color: #d7e0ea; }
+        .btn-cancel:hover { background: #f8fafc; }
+        .btn-save { background: #2563eb; color: #fff; border-color: #2563eb; box-shadow: 0 3px 8px rgba(37,99,235,.14); }
+        .btn-save:hover { background: #1d4ed8; transform: translateY(-1px); }
+    </style>
 </head>
-
 <body>
-<div class="container">
-    <h2>Tambah Tarif Parkir</h2>
-
-    <form action="../Controller/c_tarif.php?aksi=tambah" method="POST">
-
-        <label>Jenis Kendaraan</label>
-        <select name="jenis_kendaraan" required>
-            <option value="">-- Pilih Jenis --</option>
-            <option value="mobil">Mobil</option>
-            <option value="motor">Motor</option>
-            <option value="lainnya">Lainnya</option>
-        </select>
-
-        <label>Tarif per Jam</label>
-        <input type="number" name="tarif_per_jam" placeholder="e.g. 5000" min="0" required>
-
-        <button type="submit">Simpan</button>
-    </form>
-
-    <div class="back">
-        <a href="v_tampil_data_tarif.php">← Kembali</a>
+<div class="sb-topbar">
+    <span class="sb-topbar-title">Tambah Tarif</span>
+    <div class="sb-topbar-user">
+        <div class="sb-topbar-avatar"><?= strtoupper(substr($_SESSION['data']['username'], 0, 1)) ?></div>
+        <div>
+            <div class="sb-topbar-name"><?= htmlspecialchars($_SESSION['data']['username']) ?></div>
+            <div class="sb-topbar-role">Administrator</div>
+        </div>
     </div>
+</div>
+<div class="sb-main">
+<div class="sb-content">
+    <div class="page-header">
+        <h1>Tambah Tarif</h1>
+        <p>Tambahkan tarif parkir baru berdasarkan jenis kendaraan.</p>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="card-hicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9a2.5 2.5 0 0 0-5 0v6a2.5 2.5 0 0 0 5 0"/><line x1="9.5" y1="12" x2="14.5" y2="12"/></svg></div>
+            <h2>Formulir Tambah Tarif</h2>
+        </div>
+        <form action="../Controller/c_tarif.php?aksi=tambah" method="POST">
+            <div class="card-body">
+                <div class="form-field">
+                    <label>Jenis Kendaraan <span>*</span></label>
+                    <select name="jenis_kendaraan" required>
+                        <option value="">-- Pilih Jenis --</option>
+                        <option value="motor">Motor</option>
+                        <option value="mobil">Mobil</option>
+                        <option value="lainnya">Lainnya</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label>Tarif per Jam (Rp) <span>*</span></label>
+                    <input type="number" name="tarif_per_jam" placeholder="contoh: 5000" min="0" required>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="v_tampil_data_tarif.php" class="btn btn-cancel">Batal</a>
+                <button type="submit" class="btn btn-save">Simpan Tarif</button>
+            </div>
+        </form>
+    </div>
+</div>
 </div>
 </body>
 </html>

@@ -3,7 +3,7 @@ session_start();
 include_once __DIR__ . "/../Model/m_laporan.php";
 
 if (!isset($_SESSION['data']) || strtolower($_SESSION['data']['role']) != 'owner') {
-    header("Location: ../View/v_login.php");
+    header("Location: ../index.php");
     exit;
 }
 
