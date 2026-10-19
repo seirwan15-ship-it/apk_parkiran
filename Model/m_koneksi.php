@@ -1,9 +1,9 @@
 <?php
 class koneksi {
-    private $host = "localhost";
-    private $username = "root";
-    private $pass = "";
-    private $db = "parkir_digital";
+    private $host = "sql212.infinityfree.com";
+    private $username = "if0_43198464";
+    private $pass = "T3eWDrZmjtz";
+    private $db = "if0_43198464_parkir_digital";
 
     public $koneksi;
 

@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../Model/m_helper.php';
 include_once __DIR__ . '/../Model/m_kendaraan.php';
 
 $kendaraanModel = new m_kendaraan();
@@ -10,7 +11,7 @@ if (isset($_GET['aksi'])) {
         if ($id) {
             $kendaraanModel->hapus($id);
         }
-        header("Location: ../View/v_tampil_data_kendaraan.php");
+        header("Location: {$BASE}/View/v_tampil_data_kendaraan.php");
         exit;
     }
 
@@ -21,12 +22,12 @@ if (isset($_GET['aksi'])) {
             $_POST['warna'],
             $_POST['pemilik']
         );
-        header("Location: ../View/v_tampil_data_kendaraan.php"); // fix: redirect ke tampil
+        header("Location: {$BASE}/View/v_tampil_data_kendaraan.php");
         exit;
     }
 
     if ($_GET['aksi'] === "edit") {
-        $id = $_GET['id_kendaraan'];
+        $id        = $_GET['id_kendaraan'];
         $kendaraan = $kendaraanModel->get_by_id($id);
         include __DIR__ . '/../View/v_update_data_kendaraan.php';
         exit;
@@ -40,7 +41,7 @@ if (isset($_GET['aksi'])) {
             $_POST['warna'],
             $_POST['pemilik']
         );
-        header("Location: ../View/v_tampil_data_kendaraan.php"); // fix: redirect ke tampil
+        header("Location: {$BASE}/View/v_tampil_data_kendaraan.php");
         exit;
     }
 }

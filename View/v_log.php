@@ -1,12 +1,14 @@
 <?php
 session_start();
 if (!isset($_SESSION['data']) || $_SESSION['data']['role'] != 'admin') {
-    header("Location: ../index.php");
+    require_once __DIR__ . '/../Model/m_helper.php';
+    header("Location: {$BASE}/index.php");
     exit;
 }
 
 if (!isset($data_log)) $data_log = [];
 
+require_once __DIR__ . '/../Model/m_helper.php';
 $active_menu = 'log';
 include_once __DIR__ . '/_sidebar_admin.php';
 ?>
@@ -100,7 +102,7 @@ include_once __DIR__ . '/_sidebar_admin.php';
     <div class="card">
         <div class="card-header">
             <span class="card-title">Riwayat Aktivitas</span>
-            <a href="/apk_parkiran/View/v_homeadmin.php" class="btn-back">&#8592; Kembali</a>
+            <a href="<?= $BASE ?>/View/v_homeadmin.php" class="btn-back">&#8592; Kembali</a>
         </div>
 
         <?php if (count($data_log) > 0): ?>

@@ -1,10 +1,11 @@
-<?php
+﻿<?php
 session_start();
 if (!isset($_SESSION['data']) || $_SESSION['data']['role'] != 'petugas') {
-    header("Location: ../index.php");
+    require_once __DIR__ . '/../Model/m_helper.php';
+    header("Location: {$BASE}/index.php");
     exit;
 }
-
+require_once __DIR__ . '/../Model/m_helper.php';
 $username = htmlspecialchars($_SESSION['data']['username']);
 $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
 ?>
@@ -37,7 +38,7 @@ $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
         body { font-family: "Segoe UI", Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
         a { text-decoration: none; color: inherit; }
 
-        /* ── SIDEBAR ── */
+        /* â”€â”€ SIDEBAR â”€â”€ */
         .sidebar {
             position: fixed; top: 0; left: 0;
             width: var(--sb-width); height: 100vh;
@@ -72,7 +73,7 @@ $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
         .logout-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
         .logout-btn:hover { background: var(--danger-soft); color: var(--danger); }
 
-        /* ── TOPBAR ── */
+        /* â”€â”€ TOPBAR â”€â”€ */
         .topbar { position: fixed; top: 0; left: var(--sb-width); right: 0; height: var(--sb-topbar); background: rgba(255,255,255,.97); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 28px; z-index: 100; backdrop-filter: blur(8px); box-shadow: 0 2px 10px rgba(15,23,42,.04); }
         .topbar-title { font-size: 16px; font-weight: 700; }
         .topbar-right { display: flex; align-items: center; gap: 10px; }
@@ -80,7 +81,7 @@ $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
         .topbar-name { font-size: 13px; font-weight: 600; }
         .topbar-role { font-size: 10px; color: var(--text3); margin-top: 1px; }
 
-        /* ── MAIN ── */
+        /* â”€â”€ MAIN â”€â”€ */
         .main { margin-left: var(--sb-width); padding-top: var(--sb-topbar); min-height: 100vh; }
         .content { padding: 28px 32px 48px; max-width: 1100px; margin: 0 auto; animation: fadeUp .3s ease; }
         @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
@@ -167,11 +168,11 @@ $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
     </div>
     <div class="menu-label">Menu Utama</div>
     <nav class="menu">
-        <a href="/apk_parkiran/View/v_homepetugas.php">
+        <a href="<?= $BASE ?>/View/v_homepetugas.php">
             <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
             <span>Beranda</span>
         </a>
-        <a href="/apk_parkiran/Controller/c_transaksi.php" class="active">
+        <a href="<?= $BASE ?>/Controller/c_transaksi.php" class="active">
             <svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
             <span>Transaksi</span>
         </a>
@@ -184,7 +185,7 @@ $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
                 <div class="account-role">Petugas</div>
             </div>
         </div>
-        <a href="/apk_parkiran/Controller/c_logout.php" class="logout-btn">
+        <a href="<?= $BASE ?>/Controller/c_logout.php" class="logout-btn">
             <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
             <span>Logout</span>
         </a>
@@ -224,7 +225,7 @@ $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
             </div>
         </div>
         <div class="card-body">
-            <form method="POST" action="/apk_parkiran/Controller/c_transaksi.php">
+            <form method="POST" action="<?= $BASE ?>/Controller/c_transaksi.php">
                 <div class="form-row">
                     <div class="form-field">
                         <label>Plat Nomor</label>
@@ -291,9 +292,9 @@ $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
                     <td><?= htmlspecialchars($row['waktu_masuk']) ?></td>
                     <td>
                         <div class="aksi">
-                            <a href="/apk_parkiran/Controller/c_transaksi.php?aksi=keluar&id=<?= $row['id_parkir'] ?>" class="btn-keluar"
+                            <a href="<?= $BASE ?>/Controller/c_transaksi.php?aksi=keluar&id=<?= $row['id_parkir'] ?>" class="btn-keluar"
                                onclick="return confirm('Catat kendaraan <?= htmlspecialchars($row['plat_nomor'], ENT_QUOTES) ?> keluar?')">Keluar</a>
-                            <a href="/apk_parkiran/Controller/c_transaksi.php?aksi=struk&id=<?= $row['id_parkir'] ?>" class="btn-struk">Struk</a>
+                            <a href="<?= $BASE ?>/Controller/c_transaksi.php?aksi=struk&id=<?= $row['id_parkir'] ?>" class="btn-struk">Struk</a>
                         </div>
                     </td>
                 </tr>
@@ -310,3 +311,4 @@ $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
 
 </body>
 </html>
+

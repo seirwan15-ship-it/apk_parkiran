@@ -1,12 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['data']) || $_SESSION['data']['role'] != 'admin') {
-    header("Location: ../index.php");
+    require_once __DIR__ . '/../Model/m_helper.php';
+    header("Location: {$BASE}/index.php");
     exit;
 }
-
 include_once '../Controller/c_user.php';
-
 $active_menu = 'user';
 include_once '_sidebar_admin.php';
 ?>
@@ -106,8 +105,8 @@ include_once '_sidebar_admin.php';
         <div class="card-header">
             <span class="card-title">Daftar User</span>
             <div class="btn-group">
-                <a href="v_homeadmin.php" class="btn btn-back">&#8592; Kembali</a>
-                <a href="v_tambah_data_user.php" class="btn btn-add">+ Tambah User</a>
+                <a href="<?= $BASE ?>/View/v_homeadmin.php" class="btn btn-back">&#8592; Kembali</a>
+                <a href="<?= $BASE ?>/View/v_tambah_data_user.php" class="btn btn-add">+ Tambah User</a>
             </div>
         </div>
 
@@ -150,8 +149,8 @@ include_once '_sidebar_admin.php';
                         </td>
                         <td style="text-align:center;">
                             <div class="aksi">
-                                <a href="../Controller/c_user.php?aksi=edit&id_user=<?= $row['id_user'] ?>" class="btn-update">Update</a>
-                                <a href="../Controller/c_user.php?aksi=hapus&id_user=<?= $row['id_user'] ?>"
+                                <a href="<?= $BASE ?>/Controller/c_user.php?aksi=edit&id_user=<?= $row['id_user'] ?>" class="btn-update">Update</a>
+                                <a href="<?= $BASE ?>/Controller/c_user.php?aksi=hapus&id_user=<?= $row['id_user'] ?>"
                                    class="btn-delete"
                                    onclick="return confirm('Hapus user <?= htmlspecialchars($row['nama_lengkap'], ENT_QUOTES) ?>?')">Hapus</a>
                             </div>

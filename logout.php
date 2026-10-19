@@ -1,4 +1,4 @@
 <?php
-// File ini hanya sebagai alias — arahkan ke controller yang benar
-header("Location: Controller/c_logout.php");
+require_once __DIR__ . '/Model/m_helper.php';
+header("Location: {$BASE}/Controller/c_logout.php");
 exit;

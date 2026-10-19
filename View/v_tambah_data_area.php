@@ -1,7 +1,8 @@
 <?php
 session_start();
 if (!isset($_SESSION['data']) || $_SESSION['data']['role'] != 'admin') {
-    header("Location: ../index.php");
+    require_once __DIR__ . '/../Model/m_helper.php';
+    header("Location: {$BASE}/index.php");
     exit;
 }
 $active_menu = 'area';
@@ -61,7 +62,7 @@ include_once '_sidebar_admin.php';
             <div class="card-hicon"><svg viewBox="0 0 24 24"><path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
             <h2>Formulir Tambah Area</h2>
         </div>
-        <form action="../Controller/c_area.php?aksi=tambah" method="POST">
+        <form action="<?= $BASE ?>/Controller/c_area.php?aksi=tambah" method="POST">
             <div class="card-body">
                 <div class="form-field">
                     <label>Nama Area <span>*</span></label>
@@ -73,7 +74,7 @@ include_once '_sidebar_admin.php';
                 </div>
             </div>
             <div class="card-footer">
-                <a href="v_tampil_data_area.php" class="btn btn-cancel">Batal</a>
+                <a href="<?= $BASE ?>/View/v_tampil_data_area.php" class="btn btn-cancel">Batal</a>
                 <button type="submit" class="btn btn-save">Simpan Area</button>
             </div>
         </form>

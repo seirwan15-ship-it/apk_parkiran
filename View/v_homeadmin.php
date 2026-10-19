@@ -1,13 +1,14 @@
 <?php
 session_start();
-
 if (!isset($_SESSION['data']) || $_SESSION['data']['role'] != 'admin') {
-    header("Location: ../index.php");
+    require_once __DIR__ . '/../Model/m_helper.php';
+    header("Location: {$BASE}/index.php");
     exit;
 }
 
 $active_menu = 'dashboard';
 include_once '_sidebar_admin.php';
+// $BASE tersedia dari _sidebar_admin.php
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -239,42 +240,42 @@ include_once '_sidebar_admin.php';
         <div class="card-body">
             <div class="quick-grid">
 
-                <a href="v_tampil_data_user.php" class="quick-btn">
+                <a href="<?= $BASE ?>/View/v_tampil_data_user.php" class="quick-btn">
                     <div class="quick-btn-icon blue">
                         <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M19 8v6m-3-3h6"/></svg>
                     </div>
                     Data User
                 </a>
 
-                <a href="v_tampil_data_kendaraan.php" class="quick-btn">
+                <a href="<?= $BASE ?>/View/v_tampil_data_kendaraan.php" class="quick-btn">
                     <div class="quick-btn-icon purple">
                         <svg viewBox="0 0 24 24"><path d="M5 17H3v-5l2-5h14l2 5v5h-2"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="16.5" cy="17.5" r="2.5"/><path d="M5 12h14"/></svg>
                     </div>
                     Data Kendaraan
                 </a>
 
-                <a href="v_tampil_data_tarif.php" class="quick-btn">
+                <a href="<?= $BASE ?>/View/v_tampil_data_tarif.php" class="quick-btn">
                     <div class="quick-btn-icon green">
                         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9a2.5 2.5 0 0 0-5 0v6a2.5 2.5 0 0 0 5 0"/><line x1="9.5" y1="12" x2="14.5" y2="12"/></svg>
                     </div>
                     Data Tarif
                 </a>
 
-                <a href="v_tampil_data_area.php" class="quick-btn">
+                <a href="<?= $BASE ?>/View/v_tampil_data_area.php" class="quick-btn">
                     <div class="quick-btn-icon orange">
                         <svg viewBox="0 0 24 24"><path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     </div>
                     Area Parkir
                 </a>
 
-                <a href="../Controller/c_log.php?aksi=tampil" class="quick-btn">
+                <a href="<?= $BASE ?>/Controller/c_log.php?aksi=tampil" class="quick-btn">
                     <div class="quick-btn-icon pink">
                         <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
                     </div>
                     Log Aktivitas
                 </a>
 
-                <a href="../Controller/c_logout.php" class="quick-btn">
+                <a href="<?= $BASE ?>/Controller/c_logout.php" class="quick-btn">
                     <div class="quick-btn-icon slate">
                         <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
                     </div>

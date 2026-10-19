@@ -1,7 +1,8 @@
 <?php
 session_start();
 if (!isset($_SESSION['data']) || $_SESSION['data']['role'] != 'admin') {
-    header("Location: ../index.php");
+    require_once __DIR__ . '/../Model/m_helper.php';
+    header("Location: {$BASE}/index.php");
     exit;
 }
 $active_menu = 'user';
@@ -64,7 +65,7 @@ include_once '_sidebar_admin.php';
             <div class="card-hicon"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M19 8v6m-3-3h6"/></svg></div>
             <h2>Formulir Tambah User</h2>
         </div>
-        <form action="../Controller/c_user.php?aksi=tambah" method="POST">
+        <form action="<?= $BASE ?>/Controller/c_user.php?aksi=tambah" method="POST">
             <div class="card-body">
                 <div class="form-grid">
                     <div class="form-field full">
@@ -98,7 +99,7 @@ include_once '_sidebar_admin.php';
                 </div>
             </div>
             <div class="card-footer">
-                <a href="v_tampil_data_user.php" class="btn btn-cancel">Batal</a>
+                <a href="<?= $BASE ?>/View/v_tampil_data_user.php" class="btn btn-cancel">Batal</a>
                 <button type="submit" class="btn btn-save">Simpan User</button>
             </div>
         </form>

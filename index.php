@@ -1,7 +1,8 @@
 <?php 
 session_start(); 
 include_once 'Model/m_koneksi.php'; 
-include_once 'Model/m_log.php'; 
+include_once 'Model/m_log.php';
+require_once 'Model/m_helper.php';
  
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
  
@@ -11,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $pass = trim($_POST['password']); 
  
     if ($user == "" || $pass == "") { 
-        echo "<script>alert('Isi username dan password'); window.location='index.php'</script>"; 
+        echo "<script>alert('Isi username dan password'); window.location='{$BASE}/index.php'</script>"; 
         exit; 
     } 
  
@@ -35,22 +36,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $log->simpan_log($data['id_user']); 
  
             if ($data['role'] == 'admin') { 
-                header("Location: View/v_homeadmin.php"); 
+                header("Location: {$BASE}/View/v_homeadmin.php"); 
             } elseif ($data['role'] == 'petugas') { 
-                header("Location: View/v_homepetugas.php"); 
+                header("Location: {$BASE}/View/v_homepetugas.php"); 
             } elseif ($data['role'] == 'owner') { 
-                header("Location: View/v_homeowner.php"); 
+                header("Location: {$BASE}/View/v_homeowner.php"); 
             } else { 
-                echo "<script>alert('Role tidak dikenali'); window.location='index.php'</script>"; 
+                echo "<script>alert('Role tidak dikenali'); window.location='{$BASE}/index.php'</script>"; 
             } 
             exit; 
  
         } else { 
-            echo "<script>alert('Password salah'); window.location='index.php'</script>"; 
+            echo "<script>alert('Password salah'); window.location='{$BASE}/index.php'</script>"; 
         } 
  
     } else { 
-        echo "<script>alert('Username tidak ditemukan atau akun nonaktif'); window.location='index.php'</script>"; 
+        echo "<script>alert('Username tidak ditemukan atau akun nonaktif'); window.location='{$BASE}/index.php'</script>"; 
     } 
 } 
 ?> 
@@ -422,7 +423,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </p>
 
 
-                <form method="POST" action="index.php">
+                <form method="POST" action="<?= $BASE ?>/index.php">
 
                     <div class="field">
 

@@ -1,5 +1,6 @@
 <?php
-include_once '../Model/m_area.php';
+require_once __DIR__ . '/../Model/m_helper.php';
+include_once __DIR__ . '/../Model/m_area.php';
 
 $area = new m_area();
 
@@ -7,19 +8,19 @@ if (isset($_GET['aksi'])) {
 
     if ($_GET['aksi'] == 'tambah') {
         $area->tambah($_POST['nama_area'], $_POST['kapasitas']);
-        header("Location: ../View/v_tampil_data_area.php"); // fix: redirect ke tampil, bukan tambah
+        header("Location: {$BASE}/View/v_tampil_data_area.php");
         exit;
     }
 
     if ($_GET['aksi'] == 'hapus') {
         $area->hapus($_GET['id_area']);
-        header("Location: ../View/v_tampil_data_area.php"); // fix: nama file yang benar
+        header("Location: {$BASE}/View/v_tampil_data_area.php");
         exit;
     }
 
     if ($_GET['aksi'] == 'edit') {
         $data = $area->get_by_id($_GET['id_area']);
-        include '../View/v_update_data_area.php';
+        include __DIR__ . '/../View/v_update_data_area.php';
         exit;
     }
 
@@ -29,7 +30,7 @@ if (isset($_GET['aksi'])) {
             $_POST['nama_area'],
             $_POST['kapasitas']
         );
-        header("Location: ../View/v_tampil_data_area.php"); // fix: redirect ke tampil setelah update
+        header("Location: {$BASE}/View/v_tampil_data_area.php");
         exit;
     }
 }

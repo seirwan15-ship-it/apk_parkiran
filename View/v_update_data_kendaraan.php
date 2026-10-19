@@ -1,11 +1,13 @@
 <?php
 session_start();
 if (!isset($_SESSION['data']) || $_SESSION['data']['role'] != 'admin') {
-    header("Location: ../index.php");
+    require_once __DIR__ . '/../Model/m_helper.php';
+    header("Location: {$BASE}/index.php");
     exit;
 }
 if (!isset($kendaraan)) {
-    header("Location: v_tampil_data_kendaraan.php");
+    require_once __DIR__ . '/../Model/m_helper.php';
+    header("Location: {$BASE}/View/v_tampil_data_kendaraan.php");
     exit;
 }
 $active_menu = 'kendaraan';
@@ -66,7 +68,7 @@ include_once '_sidebar_admin.php';
             <div class="card-hicon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
             <h2>Edit: <?= htmlspecialchars($kendaraan['plat_nomor']) ?></h2>
         </div>
-        <form action="../Controller/c_kendaraan.php?aksi=update" method="POST">
+        <form action="<?= $BASE ?>/Controller/c_kendaraan.php?aksi=update" method="POST">
             <div class="card-body">
                 <input type="hidden" name="id_kendaraan" value="<?= $kendaraan['id_kendaraan'] ?>">
                 <div class="form-grid">
@@ -93,7 +95,7 @@ include_once '_sidebar_admin.php';
                 </div>
             </div>
             <div class="card-footer">
-                <a href="v_tampil_data_kendaraan.php" class="btn btn-cancel">Batal</a>
+                <a href="<?= $BASE ?>/View/v_tampil_data_kendaraan.php" class="btn btn-cancel">Batal</a>
                 <button type="submit" class="btn btn-update">Simpan Perubahan</button>
             </div>
         </form>

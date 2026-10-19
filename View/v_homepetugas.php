@@ -2,9 +2,13 @@
 session_start();
 
 if (!isset($_SESSION['data']) || $_SESSION['data']['role'] != 'petugas') {
-    header("Location: ../index.php");
+    require_once __DIR__ . '/../Model/m_helper.php';
+    header("Location: {$BASE}/index.php");
     exit;
 }
+
+require_once __DIR__ . '/../Model/m_helper.php';
+// $BASE tersedia untuk semua link di halaman ini
 
 $username = htmlspecialchars($_SESSION['data']['username']);
 $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
@@ -246,11 +250,11 @@ $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
     <div class="menu-label">Menu Utama</div>
 
     <nav class="menu">
-        <a href="v_homepetugas.php" class="active">
+        <a href="<?= $BASE ?>/View/v_homepetugas.php" class="active">
             <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
             <span>Beranda</span>
         </a>
-        <a href="../Controller/c_transaksi.php">
+        <a href="<?= $BASE ?>/Controller/c_transaksi.php">
             <svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
             <span>Transaksi</span>
         </a>
@@ -264,7 +268,7 @@ $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
                 <div class="account-role">Petugas</div>
             </div>
         </div>
-        <a href="../Controller/c_logout.php" class="logout-btn">
+        <a href="<?= $BASE ?>/Controller/c_logout.php" class="logout-btn">
             <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
             <span>Logout</span>
         </a>
@@ -340,7 +344,7 @@ $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
         <div class="card-body">
             <div class="action-grid">
 
-                <a href="../Controller/c_transaksi.php" class="action-btn primary">
+                <a href="<?= $BASE ?>/Controller/c_transaksi.php" class="action-btn primary">
                     <div class="action-btn-left">
                         <div class="action-btn-icon">
                             <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -355,7 +359,7 @@ $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
                     </div>
                 </a>
 
-                <a href="../Controller/c_transaksi.php" class="action-btn secondary">
+                <a href="<?= $BASE ?>/Controller/c_transaksi.php" class="action-btn secondary">
                     <div class="action-btn-left">
                         <div class="action-btn-icon">
                             <svg viewBox="0 0 24 24"><path d="M5 17H3v-5l2-5h14l2 5v5h-2"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="16.5" cy="17.5" r="2.5"/><path d="M5 12h14"/></svg>

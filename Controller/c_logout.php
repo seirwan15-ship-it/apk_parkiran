@@ -1,7 +1,8 @@
 <?php
 session_start();
-$_SESSION = []; // kosongkan dulu semua data session
+$_SESSION = [];
 session_destroy();
 
-header("Location: ../index.php"); // sesuaikan path karena file ini ada di Controller/
+require_once __DIR__ . '/../Model/m_helper.php';
+header("Location: {$BASE}/index.php");
 exit;

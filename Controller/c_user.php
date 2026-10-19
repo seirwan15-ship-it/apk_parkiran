@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../Model/m_helper.php';
 include_once __DIR__ . '/../Model/m_user.php';
 
 $userModel = new m_user();
@@ -10,7 +11,7 @@ if (isset($_GET['aksi'])) {
         if ($id) {
             $userModel->hapus($id);
         }
-        header("Location: ../View/v_tampil_data_user.php");
+        header("Location: {$BASE}/View/v_tampil_data_user.php");
         exit;
     }
 
@@ -20,9 +21,9 @@ if (isset($_GET['aksi'])) {
             $_POST['username'],
             $_POST['password'],
             $_POST['role'],
-            $_POST['status_aktif']  // fix: status_aktif ikut dikirim dari form
+            $_POST['status_aktif']
         );
-        header("Location: ../View/v_tampil_data_user.php"); // fix: redirect ke tampil
+        header("Location: {$BASE}/View/v_tampil_data_user.php");
         exit;
     }
 
@@ -42,7 +43,7 @@ if (isset($_GET['aksi'])) {
             $_POST['role'],
             $_POST['status_aktif']
         );
-        header("Location: ../View/v_tampil_data_user.php"); // fix: redirect ke tampil
+        header("Location: {$BASE}/View/v_tampil_data_user.php");
         exit;
     }
 }

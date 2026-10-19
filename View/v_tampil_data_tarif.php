@@ -1,12 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['data']) || $_SESSION['data']['role'] != 'admin') {
-    header("Location: ../index.php");
+    require_once __DIR__ . '/../Model/m_helper.php';
+    header("Location: {$BASE}/index.php");
     exit;
 }
-
 include_once '../Controller/c_tarif.php';
-
 $active_menu = 'tarif';
 include_once '_sidebar_admin.php';
 ?>
@@ -98,8 +97,8 @@ include_once '_sidebar_admin.php';
         <div class="card-header">
             <span class="card-title">Daftar Tarif</span>
             <div class="btn-group">
-                <a href="v_homeadmin.php" class="btn btn-back">&#8592; Kembali</a>
-                <a href="v_tambah_data_tarif.php" class="btn btn-add">+ Tambah Tarif</a>
+                <a href="<?= $BASE ?>/View/v_homeadmin.php" class="btn btn-back">&#8592; Kembali</a>
+                <a href="<?= $BASE ?>/View/v_tambah_data_tarif.php" class="btn btn-add">+ Tambah Tarif</a>
             </div>
         </div>
 
@@ -137,8 +136,8 @@ include_once '_sidebar_admin.php';
                     </td>
                     <td style="text-align:center;">
                         <div class="aksi">
-                            <a href="../Controller/c_tarif.php?aksi=edit&id_tarif=<?= $row['id_tarif'] ?>" class="btn-update">Update</a>
-                            <a href="../Controller/c_tarif.php?aksi=hapus&id_tarif=<?= $row['id_tarif'] ?>"
+                            <a href="<?= $BASE ?>/Controller/c_tarif.php?aksi=edit&id_tarif=<?= $row['id_tarif'] ?>" class="btn-update">Update</a>
+                            <a href="<?= $BASE ?>/Controller/c_tarif.php?aksi=hapus&id_tarif=<?= $row['id_tarif'] ?>"
                                class="btn-delete"
                                onclick="return confirm('Hapus tarif <?= htmlspecialchars($row['jenis_kendaraan'], ENT_QUOTES) ?>?')">Hapus</a>
                         </div>

@@ -1,12 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['data']) || $_SESSION['data']['role'] != 'admin') {
-    header("Location: ../index.php");
+    require_once __DIR__ . '/../Model/m_helper.php';
+    header("Location: {$BASE}/index.php");
     exit;
 }
-
 include_once '../Controller/c_kendaraan.php';
-
 $active_menu = 'kendaraan';
 include_once '_sidebar_admin.php';
 ?>
@@ -87,8 +86,8 @@ include_once '_sidebar_admin.php';
         <div class="card-header">
             <span class="card-title">Daftar Kendaraan</span>
             <div class="btn-group">
-                <a href="v_homeadmin.php" class="btn btn-back">&#8592; Kembali</a>
-                <a href="v_tambah_data_kendaraan.php" class="btn btn-add">+ Tambah Kendaraan</a>
+                <a href="<?= $BASE ?>/View/v_homeadmin.php" class="btn btn-back">&#8592; Kembali</a>
+                <a href="<?= $BASE ?>/View/v_tambah_data_kendaraan.php" class="btn btn-add">+ Tambah Kendaraan</a>
             </div>
         </div>
 
@@ -119,8 +118,8 @@ include_once '_sidebar_admin.php';
                         <td><?= htmlspecialchars($row['pemilik'] ?? '-') ?></td>
                         <td style="text-align:center;">
                             <div class="aksi">
-                                <a href="../Controller/c_kendaraan.php?aksi=edit&id_kendaraan=<?= $row['id_kendaraan'] ?>" class="btn-update">Update</a>
-                                <a href="../Controller/c_kendaraan.php?aksi=hapus&id_kendaraan=<?= $row['id_kendaraan'] ?>"
+                                <a href="<?= $BASE ?>/Controller/c_kendaraan.php?aksi=edit&id_kendaraan=<?= $row['id_kendaraan'] ?>" class="btn-update">Update</a>
+                                <a href="<?= $BASE ?>/Controller/c_kendaraan.php?aksi=hapus&id_kendaraan=<?= $row['id_kendaraan'] ?>"
                                    class="btn-delete"
                                    onclick="return confirm('Hapus kendaraan <?= htmlspecialchars($row['plat_nomor'], ENT_QUOTES) ?>?')">Hapus</a>
                             </div>
