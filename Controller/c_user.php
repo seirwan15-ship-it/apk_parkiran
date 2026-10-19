@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . '/../Model/m_helper.php';
 include_once __DIR__ . '/../Model/m_user.php';
 

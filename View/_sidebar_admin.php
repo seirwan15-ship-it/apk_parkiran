@@ -6,21 +6,8 @@
  */
 if (!isset($active_menu)) $active_menu = '';
 
-/**
- * Deteksi base URL secara dinamis — bekerja di localhost maupun hosting
- * dengan sub-folder atau langsung di root domain.
- *
- * Logika:
- *   - __FILE__ = .../View/_sidebar_admin.php  → ambil 2 level atas = root app
- *   - DOCUMENT_ROOT = /home/user/public_html  (hosting) atau C:/xampp/htdocs (local)
- *   - $base = selisihnya → '' (root) atau '/apk_parkiran' (sub-folder)
- */
-if (!isset($BASE)) {
-    $doc_root  = rtrim(str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']), '/');
-    $app_root  = rtrim(str_replace('\\', '/', dirname(dirname(__FILE__))), '/');
-    $BASE      = str_replace($doc_root, '', $app_root);
-    $BASE      = rtrim($BASE, '/');   // '' jika di root, '/apk_parkiran' jika sub-folder
-}
+// Gunakan helper terpusat untuk $BASE — lebih andal di hosting
+require_once __DIR__ . '/../Model/m_helper.php';
 ?>
 
 <style>

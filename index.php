@@ -1,8 +1,12 @@
-<?php 
-session_start(); 
-include_once 'Model/m_koneksi.php'; 
+<?php
+// Aktifkan error reporting untuk debug (matikan setelah production)
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+
+session_start();
+require_once 'Model/m_helper.php';  // $BASE harus tersedia pertama
+include_once 'Model/m_koneksi.php';
 include_once 'Model/m_log.php';
-require_once 'Model/m_helper.php';
  
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
  

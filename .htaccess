@@ -1,0 +1,20 @@
+# Konfigurasi untuk hosting InfinityFree / Apache
+# Pastikan PHP error tidak tampil ke user (tampilkan di log saja)
+php_flag display_errors off
+php_flag log_errors on
+
+# Atur direktori default session agar bisa diakses
+# (beberapa hosting gratis butuh ini)
+php_value session.gc_maxlifetime 3600
+
+# Cegah akses langsung ke file sensitif
+<FilesMatch "^(m_koneksi|m_helper|m_log)\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Izinkan akses ke semua file PHP lainnya
+<FilesMatch "\.php$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>

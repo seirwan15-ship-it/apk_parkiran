@@ -1,0 +1,3 @@
+# Cegah akses langsung ke semua file Model dari browser
+Order deny,allow
+Deny from all
