@@ -167,11 +167,11 @@ $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
     </div>
     <div class="menu-label">Menu Utama</div>
     <nav class="menu">
-        <a href="v_homepetugas.php">
+        <a href="/apk_parkiran/View/v_homepetugas.php">
             <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
             <span>Beranda</span>
         </a>
-        <a href="../Controller/c_transaksi.php" class="active">
+        <a href="/apk_parkiran/Controller/c_transaksi.php" class="active">
             <svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
             <span>Transaksi</span>
         </a>
@@ -184,7 +184,7 @@ $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
                 <div class="account-role">Petugas</div>
             </div>
         </div>
-        <a href="../Controller/c_logout.php" class="logout-btn">
+        <a href="/apk_parkiran/Controller/c_logout.php" class="logout-btn">
             <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
             <span>Logout</span>
         </a>
@@ -224,7 +224,7 @@ $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
             </div>
         </div>
         <div class="card-body">
-            <form method="POST" action="../Controller/c_transaksi.php">
+            <form method="POST" action="/apk_parkiran/Controller/c_transaksi.php">
                 <div class="form-row">
                     <div class="form-field">
                         <label>Plat Nomor</label>
@@ -291,9 +291,9 @@ $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
                     <td><?= htmlspecialchars($row['waktu_masuk']) ?></td>
                     <td>
                         <div class="aksi">
-                            <a href="../Controller/c_transaksi.php?aksi=keluar&id=<?= $row['id_parkir'] ?>" class="btn-keluar"
+                            <a href="/apk_parkiran/Controller/c_transaksi.php?aksi=keluar&id=<?= $row['id_parkir'] ?>" class="btn-keluar"
                                onclick="return confirm('Catat kendaraan <?= htmlspecialchars($row['plat_nomor'], ENT_QUOTES) ?> keluar?')">Keluar</a>
-                            <a href="../Controller/c_transaksi.php?aksi=struk&id=<?= $row['id_parkir'] ?>" class="btn-struk">Struk</a>
+                            <a href="/apk_parkiran/Controller/c_transaksi.php?aksi=struk&id=<?= $row['id_parkir'] ?>" class="btn-struk">Struk</a>
                         </div>
                     </td>
                 </tr>

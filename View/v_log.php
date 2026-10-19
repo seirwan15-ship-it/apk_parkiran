@@ -8,7 +8,7 @@ if (!isset($_SESSION['data']) || $_SESSION['data']['role'] != 'admin') {
 if (!isset($data_log)) $data_log = [];
 
 $active_menu = 'log';
-include_once '_sidebar_admin.php';
+include_once __DIR__ . '/_sidebar_admin.php';
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -100,7 +100,7 @@ include_once '_sidebar_admin.php';
     <div class="card">
         <div class="card-header">
             <span class="card-title">Riwayat Aktivitas</span>
-            <a href="v_homeadmin.php" class="btn-back">&#8592; Kembali</a>
+            <a href="/apk_parkiran/View/v_homeadmin.php" class="btn-back">&#8592; Kembali</a>
         </div>
 
         <?php if (count($data_log) > 0): ?>

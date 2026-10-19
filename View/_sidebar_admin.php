@@ -341,42 +341,42 @@ a { text-decoration: none; color: inherit; }
         <ul class="sb-menu">
 
             <li>
-                <a href="v_homeadmin.php" class="<?= $active_menu==='dashboard'?'sb-active':'' ?>">
+                <a href="/apk_parkiran/View/v_homeadmin.php" class="<?= $active_menu==='dashboard'?'sb-active':'' ?>">
                     <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
                     <span>Dashboard</span>
                 </a>
             </li>
 
             <li>
-                <a href="v_tampil_data_user.php" class="<?= $active_menu==='user'?'sb-active':'' ?>">
+                <a href="/apk_parkiran/View/v_tampil_data_user.php" class="<?= $active_menu==='user'?'sb-active':'' ?>">
                     <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.85"/></svg>
                     <span>Data User</span>
                 </a>
             </li>
 
             <li>
-                <a href="v_tampil_data_kendaraan.php" class="<?= $active_menu==='kendaraan'?'sb-active':'' ?>">
+                <a href="/apk_parkiran/View/v_tampil_data_kendaraan.php" class="<?= $active_menu==='kendaraan'?'sb-active':'' ?>">
                     <svg viewBox="0 0 24 24"><path d="M5 17H3v-5l2-5h14l2 5v5h-2"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="16.5" cy="17.5" r="2.5"/><path d="M5 12h14"/></svg>
                     <span>Data Kendaraan</span>
                 </a>
             </li>
 
             <li>
-                <a href="v_tampil_data_tarif.php" class="<?= $active_menu==='tarif'?'sb-active':'' ?>">
+                <a href="/apk_parkiran/View/v_tampil_data_tarif.php" class="<?= $active_menu==='tarif'?'sb-active':'' ?>">
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9a2.5 2.5 0 0 0-5 0v6a2.5 2.5 0 0 0 5 0"/><line x1="9.5" y1="12" x2="14.5" y2="12"/></svg>
                     <span>Data Tarif</span>
                 </a>
             </li>
 
             <li>
-                <a href="v_tampil_data_area.php" class="<?= $active_menu==='area'?'sb-active':'' ?>">
+                <a href="/apk_parkiran/View/v_tampil_data_area.php" class="<?= $active_menu==='area'?'sb-active':'' ?>">
                     <svg viewBox="0 0 24 24"><path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     <span>Area Parkir</span>
                 </a>
             </li>
 
             <li>
-                <a href="../Controller/c_log.php?aksi=tampil" class="<?= $active_menu==='log'?'sb-active':'' ?>">
+                <a href="/apk_parkiran/Controller/c_log.php?aksi=tampil" class="<?= $active_menu==='log'?'sb-active':'' ?>">
                     <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
                     <span>Log Aktivitas</span>
                 </a>
@@ -387,7 +387,7 @@ a { text-decoration: none; color: inherit; }
 
     <!-- LOGOUT -->
     <div class="sb-footer">
-        <a href="../Controller/c_logout.php" class="sb-logout">
+        <a href="/apk_parkiran/Controller/c_logout.php" class="sb-logout">
             <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
             <span>Logout</span>
         </a>

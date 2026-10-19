@@ -161,11 +161,11 @@ $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
     </div>
     <div class="menu-label">Menu Utama</div>
     <nav class="menu">
-        <a href="v_homeowner.php">
+        <a href="/apk_parkiran/View/v_homeowner.php">
             <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
             <span>Beranda</span>
         </a>
-        <a href="../Controller/c_laporan.php" class="active">
+        <a href="/apk_parkiran/Controller/c_laporan.php" class="active">
             <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
             <span>Laporan</span>
         </a>
@@ -178,7 +178,7 @@ $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
                 <div class="account-role">Owner</div>
             </div>
         </div>
-        <a href="../Controller/c_logout.php" class="logout-btn">
+        <a href="/apk_parkiran/Controller/c_logout.php" class="logout-btn">
             <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
             <span>Logout</span>
         </a>
@@ -218,7 +218,7 @@ $initial  = strtoupper(substr($_SESSION['data']['username'], 0, 1));
             </div>
         </div>
         <div class="card-body">
-            <form method="GET" action="../Controller/c_laporan.php" class="filter-form">
+            <form method="GET" action="/apk_parkiran/Controller/c_laporan.php" class="filter-form">
                 <div class="filter-field">
                     <label>Dari Tanggal</label>
                     <input type="date" name="dari" value="<?= htmlspecialchars($dari ?? '') ?>">
